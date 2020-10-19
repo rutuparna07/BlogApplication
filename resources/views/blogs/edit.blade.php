@@ -45,9 +45,9 @@
                 @if($blog->category_id!=NULL)
                     <option value='{{$blog->category_id}}' selected disabled hidden>{{$blog->category->name}}</option> 
                 @else
-                    <option value='' selected disabled hidden>None</option> 
+                    <option value='' selected disabled hidden>Select a Category</option> 
                 @endif
-                <option value=''>None</option> 
+                <option value=''>Select a Category</option> 
                 @foreach($categories  as $category)
                     <option value='{{ $category->id }}'>{{$category->name}}</option>
                 @endforeach

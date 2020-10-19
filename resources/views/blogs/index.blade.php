@@ -77,7 +77,7 @@
       @csrf
         <label for="category">Select a Category To Display Blogs</label><br>
         <select class='form-control' name='category_id'>
-            <option value='EMPTY' selected>Select a Category</option>
+            <option value='EMPTY' selected>Select a Category (Blogs Belonging To No Category Will Be Displayed)</option>
             @foreach($categories  as $category)
                 <option value='{{ $category->id }}'>{{$category->name}}</option>
             @endforeach
