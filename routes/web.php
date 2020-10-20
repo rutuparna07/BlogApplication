@@ -36,7 +36,7 @@ Route::name('edit_blog_path')->get('/blogs/{id}/edit','Blogs\Blogscontroller@edi
 Route::name('update_blog_path')->put('/blogs/{id}','Blogs\Blogscontroller@update');
 Route::name('delete_blog_path')->get('/blogs/{id}/delete','Blogs\Blogscontroller@delete');
 Route::name('destroy_blog_path')->delete('/blogs/{id}','Blogs\Blogscontroller@destroy');
-Route::name('category.search')->post('/blogs','Blogs\Blogscontroller@categorysearch');
+Route::name('category.search')->post('','Blogs\Blogscontroller@categorysearch');
 Route::name('title.search')->put('/blogs','Blogs\Blogscontroller@titlesearch');
 
 
