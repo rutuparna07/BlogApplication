@@ -32,7 +32,6 @@
 <div class="container">
 
 @foreach($blogs as $blog)
-        @if($blog->title==$title)
         <div class="col-md-4" id="card">
             <div class="card" >
                 <div class="card-header">
@@ -64,7 +63,7 @@
                         <dd>{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</dd>
                         @if($blog->category_id!=NULL)
                           <dt>Category:</dt>
-                          <dd>{{$blog->category->name}}</dd>
+                          <dd>{{DB::table('categories')->where('id',$blog->category_id)->value('name')}}</dd>
                         @endif
                     </dl>
                     </p>
@@ -75,7 +74,6 @@
                   </div>
             </div>
         </div>
-        @endif
 
 @endforeach
 
