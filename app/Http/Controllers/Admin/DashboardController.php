@@ -37,4 +37,10 @@ class DashboardController extends Controller
         DB::table('users')->where('id',$id)->delete();
         return redirect('/role-register')->with('status',"Your data is deleted.");
     }
+
+    public function search(Request $request){
+        $data = $request->input("data");
+        $users = DB::table('users')->where('name','like','%'.$data.'%')->get();
+        return view('search')->with('users',$users);
+    }
 }

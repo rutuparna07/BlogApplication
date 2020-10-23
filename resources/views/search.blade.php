@@ -1,11 +1,10 @@
-@extends("layouts.admin")
-
+<!-- @extends("layouts.admin") -->
 @section("title")
     Registered roles
 @endsection
 
 @section('content')
-<nav>  
+    <nav>  
         <form action="/search" method="put">
             <input type="text" name="data" placeholder="Search for members">
             <input type="submit" value="Search" class="brn btn-info">
@@ -50,6 +49,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        <a href="/blogs" class='btn btn-info'>Back</a>
                     </tbody>
                     </table>
                 </div>

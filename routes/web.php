@@ -45,3 +45,5 @@ Route::name('categories.store')->post('/categories','CategoryController@store');
 Route::name('categories.update')->put('/categories/{id}','CategoryController@update');
 Route::name('categories.show')->get('/categories/{id}','CategoryController@show');
 Route::name('categories.delete')->delete('/categories/{id}','CategoryController@destroy');
+
+Route::get('search','Admin\DashboardController@search');

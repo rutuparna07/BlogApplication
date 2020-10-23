@@ -72,8 +72,16 @@
     </a>
 </div> <br> <br>
 
+<div class="form group">  
+        <form action="/search" method="put">
+            <input type="text" name="data" placeholder="Search for members">
+            <input type="submit" value="Search" class="brn btn-info">
+        </form>
+    </div>
+
+
 <div class="form-group">
-      <form action="{{ route('category.search')}}" method='POST'>
+      <form action="{{ route('category.search')}}" method='GET'>
       @csrf
         <label for="category">Select a Category To Display Blogs</label><br>
         <select class='form-control' name='category_id'>

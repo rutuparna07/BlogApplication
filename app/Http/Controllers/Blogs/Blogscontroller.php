@@ -217,10 +217,16 @@ class Blogscontroller extends Controller
     }
 
     public function titlesearch(Request $request)
-    {
-        $status="Success";
-        $title=$request->title;
-        $blogs=Blog::all();
-        return view('blogs.search',['title'=>$title,'blogs'=>$blogs,'status'=>$status]);  
+    {   
+        $title = $request->input("title");
+        $blogs = DB::table('blogs')->where('title','like','%'.$title.'%')->get();
+        // return view('search')->with('users',$users);
+        return view('blogs.search',['title'=>$title,'blogs'=>$blogs]);  
+
+
+        // $status="Success";
+        // $title=$request->title;
+        // $blogs=Blog::all();
+        // return view('blogs.search',['title'=>$title,'blogs'=>$blogs,'status'=>$status]);  
     }
 }
