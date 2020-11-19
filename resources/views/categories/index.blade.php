@@ -10,7 +10,8 @@
     </div>
 @endif
 
-
+<br>
+<div class="container">
     <div class="row">
         <div class="col-md-8">
             <h1>Categories</h1>
@@ -61,7 +62,7 @@
     <div class="btgrp" >
         <a href="{{route('blogs_path')}}" class="btn btn-outline-primary">Back</a>&nbsp;
     </div>
-    
+</div>  
 
 
 @endsection

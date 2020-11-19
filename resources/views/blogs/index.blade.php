@@ -9,6 +9,9 @@
 @endif
 <head>
     <style>
+        #carouselExampleCaptions{
+          position: relative;
+        }
         .create {
             text-decoration: none;
             background-color :#000010;
@@ -20,6 +23,7 @@
             position: fixed;
             bottom: 8px;
             right: 20px;
+            z-index: 9999;
         }
         .create:hover {
             color: white;
@@ -31,15 +35,29 @@
         #card-blur{
           filter: blur(50px);
         }
+        .categ{
+            padding: 10px 38px;
+            border: 1px black;
+            background-color: white;
+            color: black;
+            border: 2px solid #000000;
+            border-radius: 4px;
+        }
+        .categ:hover{
+            background-color: black;
+            color: white;
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+        <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="{{url('/images/one.png')}}" class="d-block w-100" alt="..." height="550px">
         <div class="carousel-caption d-none d-md-block">
@@ -71,30 +89,26 @@
       <span class="sr-only">Next</span>
     </a>
 </div> <br> <br>
-
-<div class="form group">  
-        <form action="/search" method="put">
-            <input type="text" name="data" placeholder="Search for members">
-            <input type="submit" value="Search" class="brn btn-info">
-        </form>
-    </div>
-
-
-<div class="form-group">
-      <form action="{{ route('category.search')}}" method='GET'>
-      @csrf
-        <label for="category">Select a Category To Display Blogs</label><br>
-        <select class='form-control' name='category_id'>
-            <option value='EMPTY' selected>Select a Category (Blogs Belonging To No Category Will Be Displayed)</option>
-            @foreach($categories  as $category)
-                <option value='{{ $category->id }}'>{{$category->name}}</option>
-            @endforeach
-        </select>
-        <button type="submit" class="btn btn-outline-primary">Search</button>
-      </form>
-</div>
-
-<div class="form-group">
+{{--   <div class="members_search">  
+    <form action="/search" method="put">
+        <input type="text" name="data" placeholder="Search for members" style="background: transparent;border-style:none; border-bottom:5px solid rgb(255, 0, 0);">
+        <input type="submit" value="Search" class="brn btn-info" style="display: none">
+    </form>
+  </div>
+  <div class="category_search">
+    <form action="{{ route('category.search')}}" method='GET'>
+    @csrf
+      <label for="category">Select a Category To Display Blogs</label><br>
+      <select class='form-control' name='category_id'>
+          <option value='EMPTY' selected>Select a Category (Blogs Belonging To No Category Will Be Displayed)</option>
+          @foreach($categories  as $category)
+              <option value='{{ $category->id }}'>{{$category->name}}</option>
+          @endforeach
+      </select>
+      <button type="submit" class="btn btn-outline-primary">Search</button>
+    </form>
+  </div>
+  <div class="title_search">
     <form action="{{ route('title.search') }}" method="POST">
     @csrf
     @method('PUT')
@@ -104,14 +118,14 @@
         <button type="submit" class="btn btn-outline-primary">Search</button>
     </div>
     </form>
-</div>
-
-
+  </div> --}}
 <div class="container">
 <div class="row">
     <!--"btn btn-outline-info"-->
     <div id="mybutton">
-        <a href="{{route('categories.index')}}" class="create" >Categories</a><br><br>
+      @if(Auth::user()->type=='admin')
+        <a href="{{route('categories.index')}}" class="categ" >Categories</a><br><br>
+      @endif
         <a href="{{route('create_blog_path')}}" class="create" >Create New Blog</a>
     </div>
     @if(($blogs->count()) == 0)
@@ -124,6 +138,9 @@
                     <a href="{{route('blog_path',['id'=>$blog->id])}}">{{ $blog->title}}</a>
                 </div>
                 <div class="card" >
+                 @if (!is_null($blog->image))
+                 <img src="{{asset('images/' . $blog->image)}}" style="height:300px";>
+                 @else
                  <svg class="bd-placeholder-img card-img" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice" role="img">
                  <title>Placeholder</title>
                  <?php 
@@ -131,6 +148,7 @@
                  ?>
                  <rect width="100%" height="100%" fill="<?= $color ?>" id="card-blur"/>
                  <text x="5%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: 30vw;">{{ $blog->title}}</text></svg>
+                 @endif
                 </div>
                   <div class="card-body">
                     {{ substr($blog->content,0,50)}}

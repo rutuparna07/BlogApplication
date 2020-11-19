@@ -32,6 +32,7 @@
         }
         .lead {
             font-family: 'Kufam', cursive;
+            padding: 10px 10px 10px 20px;
         }
     </style>
 </head>
@@ -46,33 +47,30 @@
                 </p>
 
                 @if (!is_null($blog->image))
-                    <img src="{{asset('images/' . $blog->image)}}">
+                    <img src="{{asset('images/' . $blog->image)}}" style="display: block;
+                    margin-left: 20px;">
                 @endif
-            </div>
-        </div> 
+            </div><br>
+        </div>
+        <p class='lead'>
+            <dl class='dl-horizontal'>
+                <dt>Posted:</dt>
+                <dd>{{date('M j, Y g:i a',strtotime($blog->created_at)) }}</dd>
+                <dt>Last Modified:</dt>
+                <dd>{{date('M j, Y g:i a',strtotime($blog->updated_at)) }}</dd>
+                <dt>Created By:</dt>
+                <dd>{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</dd>
+                @if($blog->category_id!=NULL)
+                    <dt>Category:</dt>
+                    <dd>{{$blog->category->name}}</dd>
+                @endif
+            </dl>
+        </p>
         <div class="btgrp" >
-        
-            <p class='lead'>
-                <dl class='dl-horizontal'>
-                    <dt>Posted:</dt>
-                    <dd>{{date('M j, Y g:i a',strtotime($blog->created_at)) }}</dd>
-                    <dt>last Updated:</dt>
-                    <dd>{{date('M j, Y g:i a',strtotime($blog->updated_at)) }}</dd>
-                    <dt>Created By:</dt>
-                    <dd>{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</dd>
-                    @if($blog->category_id!=NULL)
-                        <dt>Category:</dt>
-                        <dd>{{$blog->category->name}}</dd>
-                    @endif
-                </dl>
-            </p>
-
             <a href="{{route('blogs_path')}}">Back</a>&nbsp;
             <a href="{{route('edit_blog_path',['id'=>$blog->id])}}">Edit</a>&nbsp;
             <a href="{{route('delete_blog_path',['id'=>$blog->id])}}" style="color: red" >Delete</a>
         </div>
-        
-        
     </div>
     <hr><br>
     <div class="container">

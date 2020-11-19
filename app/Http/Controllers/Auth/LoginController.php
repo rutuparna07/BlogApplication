@@ -34,7 +34,7 @@ class LoginController extends Controller
             return 'dashboard';
         }
         else {
-            return '/';
+            return '/blogs';
         }
         
     }
