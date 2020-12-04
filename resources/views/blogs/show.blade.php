@@ -8,6 +8,7 @@
     </div>
 @endif
 
+<html style="background-image: url({{url('images/bg.png')}})">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Kufam&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
@@ -43,7 +44,7 @@
         <div class="titlebg"><p class="title">{{$blog->title}}</p></div>
             <div class="container">
                 <p class="lead">
-                    {{$blog->content}}
+                    {!! $blog->content !!}
                 </p>
 
                 @if (!is_null($blog->image))
@@ -64,7 +65,15 @@
                     <dt>Category:</dt>
                     <dd>{{$blog->category->name}}</dd>
                 @endif
+                <dt>Views:</dt>
+                <dd>{{$blog->views}}</dd>
+                <dt>
+                @if(Auth::user()->type=='admin')
+                <a class="btn btn-outline-primary" href="{{route('reset_views',['id'=>$blog->id])}}">Reset Views</a>
+                @endif
+                </dt>
             </dl>
+            
         </p>
         <div class="btgrp" >
             <a href="{{route('blogs_path')}}">Back</a>&nbsp;
@@ -81,3 +90,6 @@
 
 </div>
 @endsection
+</html>
+
+

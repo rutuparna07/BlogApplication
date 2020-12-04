@@ -10,6 +10,14 @@
 
         }
     </style>
+    <script src="https://cdn.tiny.cloud/1/o2iga9k4nfuuydk1ttwpnj5ierzx03dxjw4iu9dv69t0q5yd/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            plugins: 'link code',
+            menubar: 'edit insert format table tools'
+        });
+    </script>
 </head>
 <br>
 
@@ -32,9 +40,15 @@
         <div class="form-group">
             <label for="content" style=" font-family: 'Raleway', sans-serif; font-size:20px;">Content</label>
             @if(old('content')==Null)
-                <textarea name="content" rows="10" class="form-control" style="font-size:15px;" required>{{$blog->content}}</textarea>
+                <textarea name="content" rows="10" class="@error('content') is-invalid @enderror" style="font-size:15px;">{{$blog->content}}</textarea>
+                @error('content')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             @else
-                <textarea name="content" rows="10" class="form-control" style="font-size:15px;" required>{{old('content')}}</textarea>
+                <textarea name="content" rows="10" class="@error('content') is-invalid @enderror" style="font-size:15px;">{{old('content')}}</textarea>
+                @error('content')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             @endif
             
         </div>

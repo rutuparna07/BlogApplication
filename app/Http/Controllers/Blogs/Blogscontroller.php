@@ -29,8 +29,8 @@ class Blogscontroller extends Controller
         $status='Success';
         $categories=Category::all();
         $blogs=Blog::all();
-        return view('blogs.index',['blogs'=>$blogs,'categories'=>$categories,'status'=>$status]);
-      
+        $top = DB::table('blogs')->max('views');
+        return view('blogs.index',['blogs'=>$blogs,'categories'=>$categories,'status'=>$status,'top'=>$top]);
     }
 
     /**
@@ -56,7 +56,8 @@ class Blogscontroller extends Controller
         $status='Success';
 
         $this->validate($request,[
-            'featured_image' =>'sometimes | image'
+            'featured_image' =>'sometimes | image',
+            'content' =>'required'
         ]);
 
         $blog->title=$request->title;
@@ -88,6 +89,8 @@ class Blogscontroller extends Controller
     {
         $status='Success';
         $blog=Blog::find($id);
+        $blog->views=$blog->views+1;
+        $blog->update();
         return view('blogs.show',['blog'=>$blog,'status'=>$status]);  
     }
 
@@ -128,7 +131,8 @@ class Blogscontroller extends Controller
         $blog=Blog::find($id);
 
         $this->validate($request,[
-            'featured_image' =>'sometimes | image'
+            'featured_image' =>'sometimes | image',
+            'content' => 'required'
         ]);
 
     
@@ -136,7 +140,7 @@ class Blogscontroller extends Controller
         $blog->content=$request->content;
         $user_id=$blog->user_id;
         $blog->category_id=$request->category_id;
-
+        $blog->views=$blog->views-1;
         if($request->hasfile('featured_image'))
         {
             $image = $request->file('featured_image');
@@ -229,4 +233,25 @@ class Blogscontroller extends Controller
         // $blogs=Blog::all();
         // return view('blogs.search',['title'=>$title,'blogs'=>$blogs,'status'=>$status]);  
     }
+
+    public function resetviews($id)
+    {
+        $status='Success';
+        $blog=Blog::find($id);
+        if(Auth::user()->type=='admin')
+        {
+            $blog->views=0;
+            $blog->update();
+            $status="Views Resetted Successfully";
+        }
+        else
+        {
+            $blog->views=$blog->views-1;
+            $blog->update();
+            $status="Only Admins Can Reset Views";
+        }
+        return redirect()->route('blog_path',['id'=>$blog->id])->with(['blog'=>$blog,'status'=>$status]);
+    }
+
+
 }

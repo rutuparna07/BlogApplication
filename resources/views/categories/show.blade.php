@@ -66,6 +66,8 @@
                             <dt>Category:</dt>
                             <dd>{{$blog->category->name}}</dd>
                             @endif
+                            <dt>Views:</dt>
+                            <dd>{{$blog->views}}</dd>
                         </dl>
                         </p>
 

@@ -17,6 +17,7 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->integer('views')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
             //$table->foreignId('user_id')->constrained('users');

@@ -20,7 +20,7 @@ class adminMiddleware
             return $next($request);
         }
         else {
-            return redirect('/home')->with('status','Fatal Error[69]:You are not allowed to admin dashboard');
+            return redirect('/blogs')->with('status','Fatal Error[69]:You are not allowed to admin dashboard');
         }
     }
 }

@@ -22,7 +22,7 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 2;
+            z-index: 999;
         }
         .main {
             margin-top: 55px; /* Add a top margin to avoid content overlay */
@@ -30,8 +30,8 @@
         }
     </style>
 </head>
-<body>
-    <div id="app">
+<body style="background-image: url({{ URL::asset('images/bg.jpg') }})">
+    <div id="app" style="background-image: url({{url('images/bg.png')}})">
         <nav class="navbar navbar-expand-md navbar-dark  shadow-sm" style="background-color: #000010;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/blogs') }}">
@@ -70,7 +70,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    <a class="dropdown-item" href="#">View Profile</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -82,7 +82,7 @@
             </div>
         </nav>
        
-        <div class="main" style="background-image: url({{url('images/bg.png')}})">
+        <div class="main" style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(255, 255, 255, 0.699)),url({{url('images/bg.png')}})">
         @yield('content')
         </div>
         

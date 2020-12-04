@@ -9,7 +9,7 @@
         <h4>{{session('status')}}</h4>
     </div>
 @endif
-
+<html style="background-image: url({{url('images/bg.png')}})">
 <br>
 <div class="container">
     <div class="row">
@@ -37,7 +37,7 @@
                         <form action="{{ route('categories.delete',['id'=>$category->id] )}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+                            <td><button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button></td>
                         </form>
                     </tr>
                     @endforeach
@@ -66,3 +66,4 @@
 
 
 @endsection
+</html>

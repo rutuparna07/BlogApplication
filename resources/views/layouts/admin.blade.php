@@ -32,15 +32,22 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="blue">
     <div class="logo">
+        <?php 
+            $email = Auth::user()->email;
+            $default = "https://assets.stickpng.com/images/5847fb42cef1014c0b5e48d8.png";
+            $size = 40;
+            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+        ?>
         <a href="" class="simple-text logo-normal" >
-          Admin Panel
-        </a>
+          Admin Panel 
+        </a><img src="<?php echo $grav_url; ?>" alt=""  height="50px" width="50px" />
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li>
             <a href="/dashboard">
-              <p>Dashboard</p>
+              <p>
+                 {{ Auth::user()->name }}`s Dashboard</p>
             </a>
           </li>
           <li>
@@ -61,7 +68,7 @@
 
     <div class="main-panel" id="main-panel">
       <div>
-        <a  style= "color:cornsilk;font-size:15px;opacity: 0.8;float:right; margin: 15px 15px" href="{{ route('logout') }}"
+        <a  style= "color:cornsilk;font-size:15px;opacity: 0.8;float:right; margin: 15px 15px;" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         <img src="{{url('/images/exit.png')}}" alt="Image" height="50px" width="55px"/>

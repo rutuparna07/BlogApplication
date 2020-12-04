@@ -47,7 +47,7 @@
                                 <a href="/role-edit/{{$row->id}}" class="btn btn-secondary">EDIT</a>
                             </td>
                             <td>
-                                <a href="/role-delete/{{$row->id}}" class="btn btn-danger">DELETE</a>
+                                <a href="/role-delete/{{$row->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">DELETE</a>
                             </td>
                         </tr>
                         @endforeach

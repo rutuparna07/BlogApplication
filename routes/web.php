@@ -38,6 +38,7 @@ Route::name('delete_blog_path')->get('/blogs/{id}/delete','Blogs\Blogscontroller
 Route::name('destroy_blog_path')->delete('/blogs/{id}','Blogs\Blogscontroller@destroy');
 Route::name('category.search')->post('','Blogs\Blogscontroller@categorysearch');
 Route::name('title.search')->put('/blogs','Blogs\Blogscontroller@titlesearch');
+Route::name('reset_views')->get('/resetviews/{id}','Blogs\Blogscontroller@resetviews');
 Route::name('dashboard')->get('/dashboard', function () {
     return view('admin.dashboard');
 });
