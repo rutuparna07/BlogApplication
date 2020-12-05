@@ -34,6 +34,7 @@
                             <th>User type </th>
                             <th>EDIT</th>
                             <th>DELETE</th>
+                            <th>PROFILE</th>
                         </tr>
                     </tbody>
                     <tbody>
@@ -49,6 +50,11 @@
                             <td>
                                 <a href="/role-delete/{{$row->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">DELETE</a>
                             </td>
+                            <form action="{{ route('profile',['id'=>$row->id] )}}" method="GET">
+                            @csrf
+                            @method('GET')
+                            <td><button type="submit" class="btn btn-outline-primary">View Profile</button></td>
+                            </form>
                         </tr>
                         @endforeach
                     </tbody>

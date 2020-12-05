@@ -39,6 +39,11 @@ Route::name('destroy_blog_path')->delete('/blogs/{id}','Blogs\Blogscontroller@de
 Route::name('category.search')->post('','Blogs\Blogscontroller@categorysearch');
 Route::name('title.search')->put('/blogs','Blogs\Blogscontroller@titlesearch');
 Route::name('reset_views')->get('/resetviews/{id}','Blogs\Blogscontroller@resetviews');
+
+Route::name('profile')->get('/yourprofile/{id}', 'Blogs\Blogscontroller@yourprofile');
+Route::name('profileupdate')->put('/yourprofile/{id}','Blogs\Blogscontroller@profileupdate');
+Route::name('profiledelete')->delete('/yourprofile/{id}','Blogs\Blogscontroller@profiledelete');
+
 Route::name('dashboard')->get('/dashboard', function () {
     return view('admin.dashboard');
 });

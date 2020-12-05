@@ -32,8 +32,11 @@ class DashboardController extends Controller
     }
 
     public function delete(Request $request, $id){
-        $blog=DB::table('blogs')->where('user_id',$id)->first();
-        Storage::delete($blog->image);
+        $blogs=DB::table('blogs')->where('user_id',$id)->get();
+        foreach($blogs as $blog)
+        {
+            Storage::delete($blog->image);
+        }
         DB::table('users')->where('id',$id)->delete();
         return redirect('/role-register')->with('status',"Your data is deleted.");
     }

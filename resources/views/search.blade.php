@@ -35,6 +35,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>User type </th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody class="table">
@@ -44,6 +45,11 @@
                                     <td> {{ $row->name }}</td>
                                     <td> {{$row->email}}</td>
                                     <td> {{$row->type}}</td>
+                                    <form action="{{ route('profile',['id'=>$row->id] )}}" method="GET">
+                                    @csrf
+                                    @method('GET')
+                                    <td><button type="submit" class="btn btn-outline-primary">View Profile</button></td>
+                                    </form>
                                 </tr>
                                 @endforeach
                             </tbody>

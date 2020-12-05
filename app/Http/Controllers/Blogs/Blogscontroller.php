@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use App\Blog;
 use App\Category;
+use App\User;
 use Auth;
 use DB;
 use Storage;
@@ -182,7 +183,7 @@ class Blogscontroller extends Controller
             $blog->delete();
             $status='Blog Deleted Successfully';
             $blogs=Blog::all();
-            return redirect()->route('blogs_path')->with(['blogs'=>$blogs,'status'=>$status]);
+            return redirect()->route('blogs_path')->with(['status'=>$status]);
         }
         else
         {
@@ -252,6 +253,62 @@ class Blogscontroller extends Controller
         }
         return redirect()->route('blog_path',['id'=>$blog->id])->with(['blog'=>$blog,'status'=>$status]);
     }
+
+    public function yourprofile($id)
+    {
+        if(User::find($id))
+        {
+        $status='Success';
+        $categories=Category::all();
+        $blogs=Blog::all();
+        return view('layouts.profile',['blogs'=>$blogs,'categories'=>$categories,'status'=>$status,'id'=>$id]);
+        }
+        else
+        {
+            $status="Account Not Found";
+            return redirect()->route('blogs_path')->with(['status'=>$status]);
+        }
+
+    }
+
+    public function profileupdate(Request $request,$id)
+    {
+        if(Auth::user()->id==$id || Auth::user()->type=='admin')
+        {
+            $user=User::find($id);
+            $user->name = $request->name;
+            $user->update();
+            $status="Account Renamed Successfully";
+            return redirect()->route('profile',['id'=>$id])->with(['status'=>$status]);
+        }
+        else
+        {
+            $status="You Cannot Rename Account";
+            return redirect()->route('profile',['id'=>$id])->with(['status'=>$status]);
+        }
+    }
+
+    public function profiledelete($id)
+    {
+        if(Auth::user()->id==$id || Auth::user()->type=='admin')
+        {
+            $blogs=DB::table('blogs')->where('user_id',$id)->get();
+            foreach($blogs as $blog)
+            {
+                Storage::delete($blog->image);
+            }
+            DB::table('users')->where('id',$id)->delete();
+            return redirect()->route('welcome');
+        }
+        else
+        {
+            $status="You Cannot Delete the Account";
+            return redirect()->route('profile',['id'=>$id])->with(['status'=>$status]);
+        }
+
+    }
+
+
 
 
 }
