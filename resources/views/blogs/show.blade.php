@@ -60,7 +60,7 @@
                 <dt>Last Modified:</dt>
                 <dd>{{date('M j, Y g:i a',strtotime($blog->updated_at)) }}</dd>
                 <dt>Created By:</dt>
-                <dd>{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</dd>
+                <dd><a href="{{route('profile',['id'=>$blog->user_id])}}">{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</a></dd>
                 @if($blog->category_id!=NULL)
                     <dt>Category:</dt>
                     <dd>{{$blog->category->name}}</dd>
