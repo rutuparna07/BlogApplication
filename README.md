@@ -9,6 +9,14 @@
 
 ## About BLOGG
 
+#COLORS
+
+PURE BLACK : #000000
+ASH : #BABABA
+SKY : #94A8B3
+CREAM : #DCD3C9
+SOFT GREY : #DEDCDE
+
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

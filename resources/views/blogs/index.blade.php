@@ -77,8 +77,6 @@
     </style>
 </head>
 <body>
-  @foreach ($blogs as $blog)
-    @if ($blog->views===$top)
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -92,6 +90,9 @@
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </div>
+            
+            @foreach ($blogs as $blog)
+            @if ($blog->views===$top)
             <div class="carousel-item">
               <a href="{{route('blog_path',['id'=>$blog->id])}}" style="text-decoration: none; color:whitesmoke;">
                 <img src="{{asset('images/' . $blog->image)}}" class="d-block w-100" alt="..." height="550px">
@@ -101,7 +102,9 @@
                 </div>
               </a>
             </div>
-          </div>
+            </div>
+            @endif
+            @endforeach
           <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -111,22 +114,21 @@
             <span class="sr-only">Next</span>
           </a>
       </div> 
-    @endif
-  @endforeach
+    
   <br> <br>
 <div id="searchmodel">
   <div id="searchbar">
-    <div class="member search">  
+    <div class="member search" style="display: inline-block">  
       <form action="/search" method="put">
           <input type="text" class="search_box" name="data" placeholder="Search for members" style="width: 300px">&nbsp;
           <input type="submit" value="Search" class="btn btn-outline-dark" >
       </form>
     </div>
-    <div class="category search" style="display: inline-block">
-      <form action="{{ route('category.search')}}" method='GET' >
+    <div class="category search" >
+      <form action="{{route('category.search')}}" method='GET' >
       @csrf
         <br>
-        <select class='form-control' name='category_id' class="search_box" style="width: 300px" style="border: transparent;">
+        <select class='form-control' name='category_id' class="search_box" style="width: 300px; border: transparent;">
             <option value='EMPTY' selected >Select a Category</option>
             @foreach($categories  as $category)
                 <option value='{{ $category->id }}'>{{$category->name}}</option>
