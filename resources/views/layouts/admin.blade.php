@@ -56,6 +56,9 @@
             </a>
           </li>
           <li>
+            <a href="{{route('categories.index')}}" class="categ" >Categories</a>
+          </li>
+          <li>
             <a href="/blogs">
               <p>Posts</p>
             </a>
