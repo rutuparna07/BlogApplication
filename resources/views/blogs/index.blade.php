@@ -69,9 +69,8 @@
             border-bottom: 3px solid rgba(141, 141, 141, 0.521);
         }
         #searchbtn{
-          float: right;
           margin-left: 310px;
-          margin-top: -37px;
+          margin-top: -60px;
         }
         
     </style>
