@@ -12,7 +12,7 @@
     <br>
     <div class="row">
         <div class="col-md-8">
-            <a href="/role-register" class='btn btn-info' style="margin-bottom:10px;">Back</a>
+            <a href="/blogs" class='btn btn-info' style="margin-bottom:10px;">Back</a>
             <div class="card">
                 <div class="card-header" >
                     <h4 class="card-title" style="font-size: 40px;">Find Users</h4>

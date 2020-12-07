@@ -64,7 +64,7 @@
                     <dd>{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</dd>
                     @if($blog->category_id!=NULL)
                       <dt>Category:</dt>
-                      <dd>{{$blog->category->name}}</dd>
+                      <dd>{{DB::table('categories')->where('id',$blog->category_id)->value('name')}}</dd>
                     @endif
                     <dt>Views:</dt>
                     <dd>{{$blog->views}}</dd>
