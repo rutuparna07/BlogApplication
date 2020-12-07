@@ -63,7 +63,7 @@
                 <dd><a href="{{route('profile',['id'=>$blog->user_id])}}">{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</a></dd>
                 @if($blog->category_id!=NULL)
                     <dt>Category:</dt>
-                    <dd>{{$blog->category->name}}</dd>
+                    <dd><a href="{{route('categories.search',['id'=>$blog->category_id])}}">{{$blog->category->name}}</a></dd>
                 @endif
                 <dt>Views:</dt>
                 <dd>{{$blog->views}}</dd>

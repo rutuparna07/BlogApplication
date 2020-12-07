@@ -9,6 +9,16 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
         <body>
+        <div class="container">
+        <br>
+        <div class="row">
+        <div class="col-md-8">
+        <div class="btgrp" >
+        <a href="{{route('blogs_path')}}" class="btn btn-outline-primary">Back</a>&nbsp;
+        </div>
+        </div>
+        </div>
+        </div>
             <div class="container-fluid main">
                 <div class="desc">
                     <div class="row">
@@ -52,9 +62,9 @@
                       <div class="col-md-4">
                         <div class="card card-2">
                           <h3>Keyur Modh</h3>
-                          <p>Tabs, buttons, inputs, lists, cards, and more! A comprehensive library
-                            of mobile UI components, ready to go.</p>
-                          <p> Connect at : <a href="https://github.com/rutuparna07">GitHub</a> | <a href="https://www.linkedin.com/in/rutuparna-kudtarkar/">LinkedIn</a></p>
+                          <p>Handled the entire Blogs and Categories Model.In other words creation,updation,manipulation and deletion of Blogs and Categories is securely possible because of me.No need to thank me.
+                          </p>
+                          <p> Connect at : <a href="https://github.com/rutuparna07">GitHub</a> | <a href="https://www.linkedin.com/in/keyur-modh-bb948a185/">LinkedIn</a></p>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -62,7 +72,7 @@
                           <h3>Bishal Nakoda</h3>
                           <p>Learn how to easily customize and modify your app’s design to fit your
                             brand across all mobile platform styles.</p>
-                          <p> Connect at : <a href="https://github.com/rutuparna07">GitHub</a> | <a href="https://www.linkedin.com/in/rutuparna-kudtarkar/">LinkedIn</a></p>
+                          <p> Connect at : <a href="https://github.com/keyurmodh00">GitHub</a> | <a href="https://www.linkedin.com/in/rutuparna-kudtarkar/">LinkedIn</a></p>
                         </div>
                       </div>
                 </div>

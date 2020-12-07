@@ -59,7 +59,13 @@ class CategoryController extends Controller
      */
 
     
-    public function show($id)
+    public function getid(Request $request)
+    {
+        $id=$request->category_id;
+        return redirect()->route('categories.search',['id'=>$id]);
+    }
+
+    public function categorysearch($id)
     {
         $status='Success';
         $categories=Category::all();

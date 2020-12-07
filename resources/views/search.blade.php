@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     <form action="/search" method="put" style="float: right;">
-                        <input type="text" name="data" placeholder="Search for members">
+                        <input type="text" name="data" placeholder="Search for members" required>
                         <input type="submit" value="Search" class="brn btn-info">
                     </form>
                 </div>
@@ -42,7 +42,7 @@
                                 @foreach($users as $row)
                                 <tr class="primary">
                                     <td> {{$row->id}}</td>
-                                    <td> {{ $row->name }}</td>
+                                    <td><a href= "{{ route('profile',['id'=>$row->id] )}}">{{ $row->name }}</a></td>
                                     <td> {{$row->email}}</td>
                                     <td> {{$row->type}}</td>
                                     <form action="{{ route('profile',['id'=>$row->id] )}}" method="GET">

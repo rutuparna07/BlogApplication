@@ -36,8 +36,7 @@ Route::name('edit_blog_path')->get('/blogs/{id}/edit','Blogs\Blogscontroller@edi
 Route::name('update_blog_path')->put('/blogs/{id}','Blogs\Blogscontroller@update');
 Route::name('delete_blog_path')->get('/blogs/{id}/delete','Blogs\Blogscontroller@delete');
 Route::name('destroy_blog_path')->delete('/blogs/{id}','Blogs\Blogscontroller@destroy');
-Route::name('category.search')->post('','Blogs\Blogscontroller@categorysearch');
-Route::name('title.search')->put('/blogs','Blogs\Blogscontroller@titlesearch');
+Route::name('title.search')->get('/blogsearch','Blogs\Blogscontroller@titlesearch');
 Route::name('reset_views')->get('/resetviews/{id}','Blogs\Blogscontroller@resetviews');
 
 Route::name('profile')->get('/yourprofile/{id}', 'Blogs\Blogscontroller@yourprofile');
@@ -57,7 +56,8 @@ Route::name('about-us')->get('/about-us', function () {
 Route::name('categories.index')->get('/categories', 'CategoryController@index');
 Route::name('categories.store')->post('/categories','CategoryController@store');
 Route::name('categories.update')->put('/categories/{id}','CategoryController@update');
-Route::name('categories.show')->get('/categories/{id}','CategoryController@show');
+Route::name('categories.getid')->get('/categorysearch','CategoryController@getid');
+Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
 Route::name('categories.delete')->delete('/categories/{id}','CategoryController@destroy');
 
 Route::get('search','Admin\DashboardController@search');

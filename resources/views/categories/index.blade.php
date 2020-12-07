@@ -20,6 +20,10 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th></th>
+                        <th>Rename</th>
+                        <th>Delete</th>
+                        <th>View</th>
                     </tr>  
                 </thead>
 
@@ -27,7 +31,7 @@
                     @foreach($categories as $category)
                     <tr>
                         <td>{{$category->id}}</td>
-                        <td>{{$category->name}}</td>
+                        <td><a href="{{route('categories.search',['id'=>$category->id])}}">{{$category->name}}</a></td>
                         <form action="{{ route('categories.update',['id'=>$category->id] )}}" method="POST">
                             @csrf
                             @method('PUT')
@@ -39,6 +43,7 @@
                             @method('DELETE')
                             <td><button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button></td>
                         </form>
+                        <td><a href="{{route('categories.search',['id'=>$category->id])}}"><button type='button' class="btn btn-outline-secondary">View Blogs</button></a></td>
                     </tr>
                     @endforeach
                 </tbody>

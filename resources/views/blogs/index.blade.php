@@ -143,12 +143,13 @@
   <div id="searchbar">
     <div class="member search" style="display: inline-block">  
       <form action="/search" method="put">
-          <input type="text" class="search_box" name="data" placeholder="Search for members" style="width: 300px">&nbsp;
+          <input type="text" class="search_box" name="data" placeholder="Search for members" style="width: 300px" required>&nbsp;
           <input type="submit" value="Search" class="btn btn-outline-dark" >
       </form>
     </div>
+
     <div class="category search" >
-      <form action="{{route('category.search')}}" method='GET' >
+      <form action="{{route('categories.getid')}}" method='GET' >
       @csrf
         <br>
         <select class='form-control' name='category_id' class="search_box" style="width: 300px; border: transparent;">
@@ -160,10 +161,10 @@
         <button type="submit" class="btn btn-outline-dark" id="searchbtn" >Search</button>
       </form>
     </div>
+
     <div class="title search">
-      <form action="{{ route('title.search') }}" method="POST">
+      <form action="{{ route('title.search') }}" method="GET">
       @csrf
-      @method('PUT')
           <input type="text" name="title" class="search_box" required maxlength="200" placeholder="Search for titles" style="width: 300px">&nbsp;
           <button type="submit" class="btn btn-outline-dark" >Search</button>
       
@@ -174,7 +175,7 @@
   <div id="options" style="display: inline-block">
     <label> 
         <input type="radio" name="searchby" 
-               value="member"> By Member</label> &nbsp;
+               value="member"> For Member</label> &nbsp;
     <label> 
         <input type="radio" name="searchby" 
                value="title"> By Title</label> &nbsp;
@@ -183,6 +184,49 @@
                value="category"> By Category</label> &nbsp;
   </div> 
 </div>
+
+<div class='container'>
+<div class="row">
+@if(($blogs->count()) == 0)
+      <div class="col"><h1 class="display-4 showblog">
+        <svg id="bold" enable-background="new 0 0 24 24" height="50" viewBox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 10px;">
+        <g>
+        <path d="m12 9h-7c-.552 0-1 .448-1 1v1.5c0 .552.448 1 1 1s1-.448 1-1v-.5h1.5v6h-.5c-.552 0-1 .448-1 1s.448 1 1 1h3c.552 0 1-.448 1-1s-.448-1-1-1h-.5v-6h1.5v.5c0 .552.448 1 1 1s1-.448 1-1v-1.5c0-.552-.448-1-1-1z"/>
+        </g>
+        <g>
+        <path d="m19 11h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/>
+        </g>
+        <g>
+        <path d="m19 15h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/></g><g>
+        <path d="m19 19h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/></g><g>
+        <path d="m21 1h-18c-1.654 0-3 1.346-3 3v16c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3v-16c0-1.654-1.346-3-3-3zm0 20h-18c-.551 0-1-.448-1-1v-14h20v14c0 .552-.449 1-1 1z"/></g>
+        </svg>    
+        So Empty :(
+                    
+      </h1>
+      </div>
+      @else
+      <div class="col"><h1 class="display-4 showblog">
+        <svg id="bold" enable-background="new 0 0 24 24" height="50" viewBox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 10px;">
+        <g>
+        <path d="m12 9h-7c-.552 0-1 .448-1 1v1.5c0 .552.448 1 1 1s1-.448 1-1v-.5h1.5v6h-.5c-.552 0-1 .448-1 1s.448 1 1 1h3c.552 0 1-.448 1-1s-.448-1-1-1h-.5v-6h1.5v.5c0 .552.448 1 1 1s1-.448 1-1v-1.5c0-.552-.448-1-1-1z"/>
+        </g>
+        <g>
+        <path d="m19 11h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/>
+        </g>
+        <g>
+        <path d="m19 15h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/></g><g>
+        <path d="m19 19h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/></g><g>
+        <path d="m21 1h-18c-1.654 0-3 1.346-3 3v16c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3v-16c0-1.654-1.346-3-3-3zm0 20h-18c-.551 0-1-.448-1-1v-14h20v14c0 .552-.449 1-1 1z"/></g>
+        </svg>    
+        Blogs:
+                    
+      </h1>
+      </div>
+      @endif
+</div>
+</div>
+      
   <div class="container">
   <div class="row">
      
@@ -193,11 +237,7 @@
         @endif
           <a href="{{route('create_blog_path')}}" class="create" >Create New Blog</a>
       </div>
-      @if(($blogs->count()) == 0)
-          <h1>No Blogs Available</h1>
-      @endif
-
-          
+         
       @foreach($blogs->reverse() as $blog)
           <div class="col-md-4" id="card">
               <div class="card" >
@@ -231,7 +271,7 @@
                           <dd><a href="{{route('profile',['id'=>$blog->user_id])}}">{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</a></dd>
                           @if($blog->category_id!=NULL)
                             <dt>Category:</dt>
-                            <dd>{{$blog->category->name}}</dd>
+                            <dd><a href="{{route('categories.search',['id'=>$blog->category_id])}}">{{$blog->category->name}}</a></dd>
                           @endif
                           <dt>Views:</dt>
                           <dd>{{$blog->views}}</dd>
