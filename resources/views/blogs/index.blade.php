@@ -72,7 +72,26 @@
           margin-left: 310px;
           margin-top: -60px;
         }
-        
+        .checkout{
+          color: whitesmoke;
+        }
+        .checkout:hover{
+          text-decoration: none;
+          color: pink;
+        }
+        .secondbg{
+          z-index: 0;
+        }
+        #overlay{
+          width: 100%;
+          height: 100%;
+          background: rgb(0,0,0);
+          background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 62%, rgba(0,0,0,1) 100%);
+          z-index: 1;
+        }
+        #trend{
+          margin-top: 250px;
+        }
     </style>
 </head>
 <body>
@@ -83,23 +102,28 @@
             </ol>
               <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{url('/images/one.png')}}" class="d-block w-100" alt="..." height="550px">
+              <img src="{{url('/images/one.jpg')}}" class="d-block w-100" alt="..." height="820px" style="overflow: hidden;">
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h1 style="color: rgba(255, 255, 255, 0.418)">Get Started Today</h1>
+                <a href="#searchmodel" class="checkout">Checkout Recent Blogs </a>
               </div>
             </div>
             
             @foreach ($blogs as $blog)
             @if ($blog->views===$top)
-            <div class="carousel-item">
-              <a href="{{route('blog_path',['id'=>$blog->id])}}" style="text-decoration: none; color:whitesmoke;">
-                <img src="{{asset('images/' . $blog->image)}}" class="d-block w-100" alt="..." height="550px">
-                <div class="carousel-caption d-none d-md-block">
-                <h1>{{ $blog->title}}</h1>
-                <p>TRENDING TODAY</p>
+            <div class="carousel-item" >
+              
+                <div class="secondbg">
+                  <img src="{{asset('images/' . $blog->image)}}" class="d-block w-100" alt="..." height="820px" style="overflow: hidden;">
                 </div>
-              </a>
+                <div class="carousel-caption d-none d-md-block" id="overlay" >
+                  <p class="display-4" id="trend"><span class="display-4" id="trend" style="color: plum;">TRENDING</span> TODAY</p>
+                  
+                    <a href="{{route('blog_path',['id'=>$blog->id])}}" style="text-decoration: none; color:whitesmoke;">
+                        <h1>{{$blog->title}}</h1>
+                    </a>
+                </div>
+                  
             </div>
             </div>
             @endif
