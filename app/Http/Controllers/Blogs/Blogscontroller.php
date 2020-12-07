@@ -218,10 +218,7 @@ class Blogscontroller extends Controller
     public function categorysearch(Request $request)
     {
         $category=$request->category_id;
-        $blogs = DB::table('blogs')->where('category_id','like','%'.$category.'%')->get();
-        return view('blogs.search',['blogs'=>$blogs]);  
-        
-        // return redirect()->route('categories.show',['id'=>$category]);
+        return redirect()->route('categories.show',['id'=>$category]);
     }
 
     public function titlesearch(Request $request)
