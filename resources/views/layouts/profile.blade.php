@@ -281,11 +281,9 @@
                     <div class="col profile">
                         <?php 
                             $email = Auth::user()->email;
-                            $default = "https://assets.stickpng.com/images/5847fb42cef1014c0b5e48d8.png";
-                            $size = 40;
-                            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
                         ?>
-                        <img src="<?php echo $grav_url; ?>" alt=""  height="200px" width="200px" />
+                       <img src="https://unavatar.now.sh/<?php echo $email; ?>" height="200px" width="200px" />
+                                    
                     </div>
                     <div class="col name">
                         <h1 class="display-2" style="color: rgba(0, 0, 0, 0.705)">
