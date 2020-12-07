@@ -62,7 +62,7 @@
                       <div class="col-md-4">
                         <div class="card card-2">
                           <h3>Keyur Modh</h3>
-                          <p>Handled the entire Blogs and Categories Model.In other words creation,updation,manipulation and deletion of Blogs and Categories is securely possible because of me.No need to thank me.
+                          <p>Handled the entire Blogs and Categories Model. Creation, updation, and deletion of Blogs and Categories made securely possible.
                           </p>
                           <p> Connect at : <a href="https://github.com/rutuparna07">GitHub</a> | <a href="https://www.linkedin.com/in/keyur-modh-bb948a185/">LinkedIn</a></p>
                         </div>
@@ -70,9 +70,8 @@
                       <div class="col-md-4">
                         <div class="card card-3">
                           <h3>Bishal Nakoda</h3>
-                          <p>Learn how to easily customize and modify your app’s design to fit your
-                            brand across all mobile platform styles.</p>
-                          <p> Connect at : <a href="https://github.com/keyurmodh00">GitHub</a> | <a href="https://www.linkedin.com/in/rutuparna-kudtarkar/">LinkedIn</a></p>
+                          <p>Worked on Admin`s Dashboard along with User Roles and Permission. Implemented additional features in Blogs.</p>
+                          <p> Connect at : <a href="https://github.com/Bishal-Nakoda">GitHub</a> | <a href="https://www.linkedin.com/in/bishal-nakoda/">LinkedIn</a></p>
                         </div>
                       </div>
                 </div>
