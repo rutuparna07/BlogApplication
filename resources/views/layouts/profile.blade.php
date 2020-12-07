@@ -1,85 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-
-{{-- @if(session()->has('status') && 'status'!='Success')
-    <div class="alert alert-success" role="alert">
-        <h4>{{session('status')}}</h4>
-    </div>
-@endif
-
-<head>
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-        #carouselExampleCaptions{
-          position: relative;
-        }
-        .create {
-            text-decoration: none;
-            background-color :#000010;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-        }
-        #mybutton {
-            position: fixed;
-            bottom: 8px;
-            right: 20px;
-            z-index: 9999;
-        }
-        .create:hover {
-            color: white;
-            text-decoration: none;
-        }
-        #card {
-          padding: 1% 1%;
-        }
-        #card-blur{
-          filter: blur(50px);
-        }
-        .search {
-            display: none;
-        }
-        .categ{
-            padding: 10px 38px;
-            border: 1px black;
-            background-color: white;
-            color: black;
-            border: 2px solid #000000;
-            border-radius: 4px;
-        }
-        .categ:hover{
-            background-color: black;
-            color: white;
-            text-decoration: none;
-        }
-        #options{
-            margin-left: 50px;
-        }
-        #searchbar{
-            margin-left: 50px;
-        }
-        .search_box{
-            background: transparent;  
-            border: none;
-            border-bottom: 3px solid rgba(141, 141, 141, 0.521);
-        }
-        #searchbtn{
-          float: right;
-          margin-left: 310px;
-          margin-top: -37px;
-        }
-        
-    </style>
-</head>  
-<html style="background-image: url({{url('images/bg.png')}})">
-<script src="/js/myscript.js"></script>
---}}
 <html>
     @if(session()->has('status') && 'status'!='Success')
         <div class="alert alert-success" role="alert">
@@ -94,6 +14,7 @@
                 background-color: #dedcde8c;
                 height: 450px;
                 box-shadow: 0 14px 15px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.22);
+                margin-top: -5px;
             }
             .profile{
                 margin-top: 100px;
@@ -221,7 +142,7 @@
                             <path d="m19 19h-3c-.552 0-1-.448-1-1s.448-1 1-1h3c.552 0 1 .448 1 1s-.448 1-1 1z"/></g><g>
                             <path d="m21 1h-18c-1.654 0-3 1.346-3 3v16c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3v-16c0-1.654-1.346-3-3-3zm0 20h-18c-.551 0-1-.448-1-1v-14h20v14c0 .552-.449 1-1 1z"/></g>
                     </svg>    
-                    {{DB::table('users')->where('id',$id)->value('name')}}'s Blogs:
+                    Recent Blogs:
 
                 </h1></div>
                 <div class="col"></div>

@@ -64,7 +64,7 @@
                           <h3>Keyur Modh</h3>
                           <p>Handled the entire Blogs and Categories Model. Creation, updation, and deletion of Blogs and Categories made securely possible.
                           </p>
-                          <p> Connect at : <a href="https://github.com/rutuparna07">GitHub</a> | <a href="https://www.linkedin.com/in/keyur-modh-bb948a185/">LinkedIn</a></p>
+                          <p> Connect at : <a href="https://github.com/keyurmodh00">GitHub</a> | <a href="https://www.linkedin.com/in/keyur-modh-bb948a185/">LinkedIn</a></p>
                         </div>
                       </div>
                       <div class="col-md-4">

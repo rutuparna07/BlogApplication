@@ -10,6 +10,15 @@
     </div>
 @endif
 <html style="background-image: url({{url('images/bg.png')}})">
+<head>
+    <style>
+        .rename_box{
+            background: transparent;  
+            border: none;
+            border-bottom: 3px solid rgba(141, 141, 141, 0.521);
+        }
+    </style>
+</head>
 <br>
 <div class="container">
     <div class="row">
@@ -35,7 +44,7 @@
                         <form action="{{ route('categories.update',['id'=>$category->id] )}}" method="POST">
                             @csrf
                             @method('PUT')
-                            <td><input type="text" name="name" class="form-control" required maxlength="30"></td>
+                            <td><input type="text" name="name" class="form-control rename_box" required maxlength="30" placeholder="Enter new name"></td>
                             <td><button type="submit" class="btn btn-outline-primary">Rename</button></td>
                         </form>
                         <form action="{{ route('categories.delete',['id'=>$category->id] )}}" method="POST">

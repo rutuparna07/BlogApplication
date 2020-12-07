@@ -143,7 +143,7 @@
   <div id="searchbar">
     <div class="member search" style="display: inline-block">  
       <form action="/search" method="put">
-          <input type="text" class="search_box" name="data" placeholder="Search for members" style="width: 300px" required>&nbsp;
+          <input type="text" class="search_box" name="data" placeholder="Search for members" style="width: 300px" required >&nbsp;
           <input type="submit" value="Search" class="btn btn-outline-dark" >
       </form>
     </div>
@@ -175,7 +175,7 @@
   <div id="options" style="display: inline-block">
     <label> 
         <input type="radio" name="searchby" 
-               value="member"> For Member</label> &nbsp;
+               value="member" checked="checked"> For Member</label> &nbsp;
     <label> 
         <input type="radio" name="searchby" 
                value="title"> By Title</label> &nbsp;
