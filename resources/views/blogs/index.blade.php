@@ -227,7 +227,6 @@
                   <text x="5%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: 30vw;">{{ $blog->title}}</text></svg>
                   @endif
                   </div>
-
                     <div class="card-body">
                       {{ substr(strip_tags($blog->content),0,100) }}
                       <br>

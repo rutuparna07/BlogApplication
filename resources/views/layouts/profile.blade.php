@@ -87,7 +87,7 @@
                 <div class="row">
                     <div class="col profile">
                         <?php 
-                            $email = Auth::user()->email;
+                            $email = DB::table('users')->where('id',$id)->value('email');
                         ?>
                        <img src="https://unavatar.now.sh/<?php echo $email; ?>" height="200px" width="200px" />
                                     
