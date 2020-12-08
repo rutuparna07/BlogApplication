@@ -69,7 +69,7 @@
                 <dd>{{$blog->views}}</dd>
                 <dt>
                 @if(Auth::user()->type=='admin')
-                <a class="btn btn-outline-primary" href="{{route('reset_views',['id'=>$blog->id])}}">Reset Views</a>
+                    <a class="btn btn-outline-primary" href="{{route('reset_views',['id'=>$blog->id])}}">Reset Views</a>
                 @endif
                 </dt>
             </dl>
@@ -77,8 +77,11 @@
         </p>
         <div class="btgrp" >
             <a href="{{route('blogs_path')}}">Back</a>&nbsp;
+            @if($blog->user_id==Auth::user()->id || Auth::user()->type=='admin')
             <a href="{{route('edit_blog_path',['id'=>$blog->id])}}">Edit</a>&nbsp;
             <a href="{{route('delete_blog_path',['id'=>$blog->id])}}" style="color: red" >Delete</a>
+            @endif
+            
         </div>
     </div>
     <hr><br>

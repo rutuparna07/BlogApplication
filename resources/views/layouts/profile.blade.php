@@ -98,10 +98,10 @@
                         </h1>
                         <hr>
 
-                        @if(DB::table('users')->where('id',$id)->value('type')=='')
-                            <h6 class="lead" style="color: rgba(0, 0, 0, 0.705)"><b>Account Type :</b> Blogger</h6>
-                        @else
+                        @if(DB::table('users')->where('id',$id)->value('type')=='admin')
                             <h6 class="lead" style="color: rgba(0, 0, 0, 0.705)"><b>Account Type :</b> Admin</h6>
+                        @else
+                            <h6 class="lead" style="color: rgba(0, 0, 0, 0.705)"><b>Account Type :</b> Blogger</h6>
                         @endif
                         
                         <h6 class="lead" style="color: rgba(0, 0, 0, 0.705)"><b>Account Created :</b> {{date('M j,Y',strtotime(DB::table('users')->where('id',$id)->value('created_at')))}}</h6>
@@ -109,7 +109,8 @@
                     </div>
                     <div class="col more">
                         <a href="{{route('blogs_path')}}" class="back">Back</a><br>
-                        <a href="#" class="showrename" onclick="show('rename')">Change Username</a>
+                        @if($id==Auth::user()->id || Auth::user()->type=='admin')
+                        <a href="#" class="showrename" onclick="show('rename')">Change Name</a>
                         <form action="{{ route('profileupdate',['id'=>$id])}}" method="POST" id="rename" style="display:none;">
                             @csrf
                             @method('PUT')
@@ -121,6 +122,7 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger del" onclick="return confirm('Are you sure you want to Delete your Account?');">Delete Account</button>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -91,8 +91,9 @@ class Blogscontroller extends Controller
         $status='Success';
         $blog=Blog::find($id);
         $blog->views=$blog->views+1;
+        $user_id=$blog->user_id;
         $blog->update();
-        return view('blogs.show',['blog'=>$blog,'status'=>$status]);  
+        return view('blogs.show',['blog'=>$blog,'status'=>$status,'user_id'=>$user_id]);  
     }
 
     /**
@@ -114,7 +115,7 @@ class Blogscontroller extends Controller
         else
         {
             $status="You Cannot Edit Blog";
-            return redirect()->route('blog_path',['id'=>$blog->id])->with(['blog'=>$blog,'status'=>$status]);
+            return redirect()->route('blog_path',['id'=>$blog->id])->with(['status'=>$status]);
         }
     }
   
@@ -163,7 +164,7 @@ class Blogscontroller extends Controller
         {
             $status="You Cannot Update Blog";
         }
-        return redirect()->route('blog_path',['id'=>$blog->id])->with(['blog'=>$blog,'status'=>$status]);
+        return redirect()->route('blog_path',['id'=>$blog->id])->with(['status'=>$status]);
     }
 
     /**
@@ -188,7 +189,7 @@ class Blogscontroller extends Controller
         else
         {
             $status='You Cannot Delete Blog';
-            return redirect()->route('blog_path',['id'=>$blog->id])->with(['blog'=>$blog,'status'=>$status]);
+            return redirect()->route('blog_path',['id'=>$blog->id])->with(['status'=>$status]);
         }
     }
 
@@ -210,7 +211,7 @@ class Blogscontroller extends Controller
         else
         {
             $status="You Cannot Delete Blog";
-            return view('blogs.show',['blog'=>$blog,'status'=>$status]);
+            return redirect()->route('blog_path',['id'=>$blog->id])->with(['status'=>$status]);
         }
     }
 
@@ -238,7 +239,7 @@ class Blogscontroller extends Controller
             $blog->update();
             $status="Only Admins Can Reset Views";
         }
-        return redirect()->route('blog_path',['id'=>$blog->id])->with(['blog'=>$blog,'status'=>$status]);
+        return redirect()->route('blog_path',['id'=>$blog->id])->with(['status'=>$status]);
     }
 
     public function yourprofile($id)
@@ -262,6 +263,7 @@ class Blogscontroller extends Controller
     {
         if(Auth::user()->id==$id || Auth::user()->type=='admin')
         {
+
             $user=User::find($id);
             $user->name = $request->name;
             $user->update();

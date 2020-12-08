@@ -44,7 +44,11 @@
                                     <td> {{$row->id}}</td>
                                     <td><a href= "{{ route('profile',['id'=>$row->id] )}}">{{ $row->name }}</a></td>
                                     <td> {{$row->email}}</td>
-                                    <td> {{$row->type}}</td>
+                                    @if($row->type=='admin')
+                                    <td>Admin</td>
+                                    @else
+                                    <td>Blogger</td>
+                                    @endif
                                     <form action="{{ route('profile',['id'=>$row->id] )}}" method="GET">
                                     @csrf
                                     @method('GET')
