@@ -29,11 +29,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::name('categories.index')->get('/categories', 'CategoryController@index');
     Route::name('categories.store')->post('/categories','CategoryController@store');
     Route::name('categories.update')->put('/categories/{id}','CategoryController@update');
-    Route::name('categories.getid')->get('/categorysearch','CategoryController@getid');
-    Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
     Route::name('categories.delete')->delete('/categories/{id}','CategoryController@destroy');
-
-    Route::get('search','Admin\DashboardController@search');
 
 });
 
@@ -62,4 +58,9 @@ Route::name('welcome')->get('welcome', function () {
 Route::name('about-us')->get('/about-us', function () {
     return view('about');
 });
+
+Route::get('search','Admin\DashboardController@search');
+Route::name('categories.getid')->get('/categorysearch','CategoryController@getid');
+Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
+
 
