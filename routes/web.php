@@ -25,6 +25,16 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::get('/role-edit/{id}','Admin\DashboardController@show');
     Route::get('/role-update/{id}','Admin\DashboardController@roleupdate');
     Route::get('/role-delete/{id}',"Admin\DashboardController@delete");
+
+    Route::name('categories.index')->get('/categories', 'CategoryController@index');
+    Route::name('categories.store')->post('/categories','CategoryController@store');
+    Route::name('categories.update')->put('/categories/{id}','CategoryController@update');
+    Route::name('categories.getid')->get('/categorysearch','CategoryController@getid');
+    Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
+    Route::name('categories.delete')->delete('/categories/{id}','CategoryController@destroy');
+
+    Route::get('search','Admin\DashboardController@search');
+
 });
 
 Route::get('/blogs', 'Blogs\Blogscontroller@index')->name('blogs');
@@ -53,11 +63,3 @@ Route::name('about-us')->get('/about-us', function () {
     return view('about');
 });
 
-Route::name('categories.index')->get('/categories', 'CategoryController@index');
-Route::name('categories.store')->post('/categories','CategoryController@store');
-Route::name('categories.update')->put('/categories/{id}','CategoryController@update');
-Route::name('categories.getid')->get('/categorysearch','CategoryController@getid');
-Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
-Route::name('categories.delete')->delete('/categories/{id}','CategoryController@destroy');
-
-Route::get('search','Admin\DashboardController@search');
