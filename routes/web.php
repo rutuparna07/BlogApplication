@@ -43,9 +43,9 @@ Route::name('profile')->get('/yourprofile/{id}', 'Blogs\Blogscontroller@yourprof
 Route::name('profileupdate')->put('/yourprofile/{id}','Blogs\Blogscontroller@profileupdate');
 Route::name('profiledelete')->delete('/yourprofile/{id}','Blogs\Blogscontroller@profiledelete');
 
-Route::name('dashboard')->get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::name('dashboard')->get('/dashboard', function () {
+//     return view('admin.dashboard');
+// });
 Route::name('welcome')->get('welcome', function () {
     return view('welcome');
 });
