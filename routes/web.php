@@ -33,8 +33,6 @@ Route::group(['middleware' => ['auth','admin']], function(){
     Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
     Route::name('categories.delete')->delete('/categories/{id}','CategoryController@destroy');
 
-    Route::get('search','Admin\DashboardController@search');
-
 });
 
 Route::get('/blogs', 'Blogs\Blogscontroller@index')->name('blogs');
@@ -62,4 +60,6 @@ Route::name('welcome')->get('welcome', function () {
 Route::name('about-us')->get('/about-us', function () {
     return view('about');
 });
+
+Route::get('search','Admin\DashboardController@search');
 
