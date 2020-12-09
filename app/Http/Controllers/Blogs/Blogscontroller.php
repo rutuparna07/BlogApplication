@@ -28,7 +28,7 @@ class Blogscontroller extends Controller
     public function index()
     {
         $status='Success';
-        $categories=Category::all();
+        $categories=Category::all()->sortBy('name');
         $blogs=Blog::all();
         $top = DB::table('blogs')->max('views');
         return view('blogs.index',['blogs'=>$blogs,'categories'=>$categories,'status'=>$status,'top'=>$top]);
@@ -41,7 +41,7 @@ class Blogscontroller extends Controller
      */
     public function create()
     {
-        $categories=Category::all();
+        $categories=Category::all()->sortBy('name');
         return view('blogs.create',['categories'=>$categories]);
     }
 
@@ -106,7 +106,7 @@ class Blogscontroller extends Controller
     {
         $status='Success';
         $blog=Blog::find($id);
-        $categories=Category::all();
+        $categories=Category::all()->sortBy('name');
         $user_id=$blog->user_id;
         if($user_id==Auth::user()->id || Auth::user()->type=='admin')
         {  

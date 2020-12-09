@@ -20,9 +20,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $count=1;
         $status="Success";
-        $categories=Category::all();
-        return view('categories.index',['categories'=>$categories,'status'=>$status]);
+        $categories=Category::all()->sortBy('name');
+        return view('categories.index',['categories'=>$categories,'status'=>$status,'count'=>$count]);
     }
 
    
@@ -39,15 +40,23 @@ class CategoryController extends Controller
         $categories=Category::all();
         if(Auth::user()->type=='admin')
         {  
-            $category->name=$request->name;
+            if(count(array_filter(array(DB::table('categories')->where('name',strtoupper($request->name))->value('id'))))==0)
+            {
+            $category->name=strtoupper($request->name);
             $category->save();
             $status="Category Added Successfully";
-            return redirect('/categories')->with(['categories'=>$categories,'status'=>$status]);
+            return redirect()->route('categories.index')->with(['status'=>$status]);
+            }
+            else
+            {
+                $status="Category Already Exists";
+                return redirect()->route('categories.index')->with(['status'=>$status]);
+            }
         }
         else
         {
                 $status="You Cannot Make a New Category";
-                return redirect('/categories')->with(['categories'=>$categories,'status'=>$status]);
+                return redirect()->route('categories.index')->with(['status'=>$status]);
         }
     }
 
@@ -101,17 +110,24 @@ class CategoryController extends Controller
         $status='Success';
         $categories=Category::all();
         $category=Category::find($id);
-        $category->name=$request->name;
         if(Auth::user()->type=='admin')
         {
-            $category->update();
-            $status="Category Updated Successfully";
+            if(count(array_filter(array(DB::table('categories')->where('name',strtoupper($request->name))->value('id'))))==0)
+            {
+                $category->name=strtoupper($request->name);
+                $category->update();
+                $status="Category Updated Successfully";
+            }
+            else
+            {
+                $status="Category Already Exists";
+            }
         }
         else
         {
             $status="You Cannot Rename the Category";
         }
-        return redirect('/categories')->with(['categories'=>$categories,'status'=>$status]);
+        return redirect()->route('categories.index')->with(['status'=>$status]);
     }
 
     /**
@@ -144,6 +160,6 @@ class CategoryController extends Controller
         {
             $status="You Cannot Delete the Category";
         }
-        return redirect('/categories')->with(['categories'=>$categories,'status'=>$status]);
+        return redirect()->route('categories.index')->with(['status'=>$status]);
     }
 }

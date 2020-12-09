@@ -103,7 +103,7 @@
 </div>
 <div class="container">
     <div class="row">
-    @foreach($blogs as $blog)
+    @foreach($blogs->reverse() as $blog)
         @if($category!=NULL)
             @if($blog->category_id==$category->id)
             <div class="col-md-4" id="card">
