@@ -22,14 +22,14 @@
 <form action="{{ route('store_blog_path') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" name="title" value="{{ old('title') }}" class="form-control" required maxlength="200">
+        <label for="title" >Title</label>
+        <input type="text" name="title" value="{{ old('title') }}" class="form-control" required maxlength="40" placeholder="Enter title here">
     </div>
 
 
     <div class="form-group">
         <label for="content">Content</label>
-        <textarea name="content" rows="10" class="@error('content') is-invalid @enderror" > {{ old('content') }} </textarea>
+        <textarea name="content" rows="10" class="@error('content') is-invalid @enderror" placeholder="Tip: First 100 words of the blog are used as preview. Make it stand out. "> {{ old('content') }} </textarea>
         @error('content')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror

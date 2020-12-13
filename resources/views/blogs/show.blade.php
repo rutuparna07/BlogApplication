@@ -48,8 +48,8 @@
                 </p>
 
                 @if (!is_null($blog->image))
-                    <img src="{{asset('images/' . $blog->image)}}" style="display: block;
-                    margin-left: 20px;">
+                    <img src="{{asset('images/' . $blog->image)}}" 
+                    style="display: block; width: 512px; height: 384px; object-fit: cover; overflow:hidden;">
                 @endif
             </div><br>
         </div>
