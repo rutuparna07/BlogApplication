@@ -100,25 +100,23 @@
               <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
             </ol>
-              <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{{url('/images/one.jpg')}}" class="d-block w-100" alt="..." height="820px" style="overflow: hidden;">
-              <div class="carousel-caption d-none d-md-block">
-                <h1 style="color: rgba(255, 255, 255, 0.418)">Get Started Today</h1>
-                <a href="#searchmodel" class="checkout">Checkout Recent Blogs </a>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{url('/images/one.jpg')}}" class="d-block w-100" alt="..." height="820px" style="overflow: hidden;">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color: rgba(255, 255, 255, 0.418)">Get Started Today</h1>
+                    <a href="#searchmodel" class="checkout">Checkout Recent Blogs </a>
+                  </div>
               </div>
-            </div>
             
             @foreach ($blogs as $blog)
             @if ($blog->views===$top)
             <div class="carousel-item" >
-              
                 <div class="secondbg">
                   <img src="{{asset('images/' . $blog->image)}}" class="d-block w-100" alt="..." height="820px" style="overflow: hidden;">
                 </div>
                 <div class="carousel-caption d-none d-md-block" id="overlay" >
                   <p class="display-4" id="trend"><span class="display-4" id="trend" style="color: plum;">TRENDING</span> TODAY</p>
-                  
                     <a href="{{route('blog_path',['id'=>$blog->id])}}" style="text-decoration: none; color:whitesmoke;">
                         <h1>{{$blog->title}}</h1>
                     </a>
@@ -137,8 +135,8 @@
             <span class="sr-only">Next</span>
           </a>
       </div> 
-    
   <br> <br>
+
 <div id="searchmodel">
   <div id="searchbar">
     <div class="member search" style="display: inline-block">  
@@ -167,7 +165,6 @@
       @csrf
           <input type="text" name="title" class="search_box" required maxlength="200" placeholder="Search for titles" style="width: 300px">&nbsp;
           <button type="submit" class="btn btn-outline-dark" >Search</button>
-      
       </form>
     </div>
   </div>
