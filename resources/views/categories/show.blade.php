@@ -112,6 +112,9 @@
                         <a href="{{route('blog_path',['id'=>$blog->id])}}">{{ $blog->title}}</a>
                     </div>
                     <div class="card" >
+                    @if (!is_null($blog->image))
+                    <img src="{{asset('images/' . $blog->image)}}" style="height:300px";>
+                    @else
                     <svg class="bd-placeholder-img card-img" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice" role="img">
                     <title>Placeholder</title>
                     <?php 
@@ -119,14 +122,11 @@
                     ?>
                     <rect width="100%" height="100%" fill="<?= $color ?>" id="card-blur"/>
                     <text x="5%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: 30vw;">{{ $blog->title}}</text></svg>
+                    @endif
                     </div>
-                    <div class="card-body">
-                        {!! substr($blog->content,0,50)!!}
+                      <div class="card-body">
+                        {{ substr(strip_tags($blog->content),0,100) }}
                         <br>
-                        <br>
-                        <br>
-                        
-
                         <p class='lead'>
                         <dl class='dl-horizontal'>
                             <dt>Posted:</dt>
@@ -136,18 +136,18 @@
                             <dt>Created By:</dt>
                             <dd><a href="{{route('profile',['id'=>$blog->user_id])}}">{{DB::table('users')->where('id',$blog->user_id)->value('name')}}</a></dd>
                             @if($blog->category_id!=NULL)
-                            <dt>Category:</dt>
-                            <dd>{{$blog->category->name}}</dd>
+                              <dt>Category:</dt>
+                              <dd><a href="{{route('categories.search',['id'=>$blog->category_id])}}">{{$blog->category->name}}</a></dd>
                             @endif
                             <dt>Views:</dt>
                             <dd>{{$blog->views}}</dd>
                         </dl>
                         </p>
-
-                        <a href="{{route('blog_path',['id'=>$blog->id])}}" class="btn btn-outline-primary">
+  
+                        <a href="{{route('blog_path',['id'=>$blog->id])}}" class="btn btn-outline-primary" style="float: right;">
                             View Post
                         </a>
-                    </div>
+                      </div>
                 </div>
             </div>
             @endif
