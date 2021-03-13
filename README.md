@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="#"><img src="https://raw.githubusercontent.com/rutuparna07/BlogApplication/blob/main/public/images/logo.png" alt="Ikigai" width="200"></a>
+  <a href="#"><img src="https://github.com/rutuparna07/BlogApplication/blob/main/public/images/logo.png?raw=true" alt="Ikigai" width="200"></a>
   <br>
   Ikigai
   <br>
