@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BotmanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['auth','admin']], function(){
 Route::get('/blogs', 'Blogs\Blogscontroller@index')->name('blogs');
 Route::name('store_blog_path')->post('/blogs','Blogs\Blogscontroller@store');
 Route::name('create_blog_path')->get('/blogs/create','Blogs\Blogscontroller@create');
+
 Route::name('blogs_path')->get('/blogs', 'Blogs\Blogscontroller@index');
 Route::name('blog_path')->get('/blogs/{id}','Blogs\Blogscontroller@show');
 Route::name('edit_blog_path')->get('/blogs/{id}/edit','Blogs\Blogscontroller@edit');
@@ -65,5 +67,10 @@ Route::name('about-us')->get('/about-us', function () {
 Route::get('search','Admin\DashboardController@search');
 Route::name('categories.getid')->get('/categorysearch','CategoryController@getid');
 Route::name('categories.search')->get('/categorysearch/{id}','CategoryController@categorysearch');
+
+Route::get('/botman',[BotmanController::class,"handle"]);
+Route::post('/botman',[BotmanController::class,"handle"]);
+Route::match(['get', 'post'], '/botman', 'BotmanController@handle');
+
 
 

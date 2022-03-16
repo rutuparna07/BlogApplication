@@ -93,5 +93,13 @@
         </div>
         
     </div>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+    <script type="text/javascript">
+        var botmanWidget = {
+            introMessage: 'Hi,I am here to help you navigate!',
+            aboutText: 'Rutuparna'
+        }
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </body>
 </html>
