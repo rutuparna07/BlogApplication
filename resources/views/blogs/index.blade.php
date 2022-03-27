@@ -28,7 +28,7 @@
         #mybutton {
             position: fixed;
             bottom: 8px;
-            right: 20px;
+            left: 1em;
             z-index: 9999;
         }
         .create:hover {
