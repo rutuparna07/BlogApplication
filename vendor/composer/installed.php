@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b899a5e2b95af6bd65b6abd906dbebf800e62868',
+        'reference' => '26839b0eb03ee8178be7e3da3ff09a2124838f9d',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -192,6 +192,12 @@
             'aliases' => array(),
             'reference' => '3c921a1cdba35b68a7f0ccffc6dffc1995b18267',
             'dev_requirement' => true,
+        ),
+        'facebook/webdriver' => array(
+            'dev_requirement' => true,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'fideloper/proxy' => array(
             'pretty_version' => '4.4.1',
@@ -454,6 +460,15 @@
                 0 => '*',
             ),
         ),
+        'laravel/dusk' => array(
+            'pretty_version' => 'v6.22.1',
+            'version' => '6.22.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/dusk',
+            'aliases' => array(),
+            'reference' => 'bc9fd27ea167746ba0616a7661e6b5bd4a80c472',
+            'dev_requirement' => true,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v7.30.6',
             'version' => '7.30.6.0',
@@ -469,7 +484,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b899a5e2b95af6bd65b6abd906dbebf800e62868',
+            'reference' => '26839b0eb03ee8178be7e3da3ff09a2124838f9d',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
@@ -623,6 +638,15 @@
             'install_path' => __DIR__ . '/../phar-io/version',
             'aliases' => array(),
             'reference' => 'bae7c545bef187884426f042434e561ab1ddb182',
+            'dev_requirement' => true,
+        ),
+        'php-webdriver/webdriver' => array(
+            'pretty_version' => '1.12.0',
+            'version' => '1.12.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-webdriver/webdriver',
+            'aliases' => array(),
+            'reference' => '99d4856ed7dffcdf6a52eccd6551e83d8d557ceb',
             'dev_requirement' => true,
         ),
         'phpdocumentor/graphviz' => array(

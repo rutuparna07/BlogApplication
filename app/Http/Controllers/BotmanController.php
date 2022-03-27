@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use App\Http\Controllers\Blogs;
+use Laravel\Dusk\Chrome;
+use Tests\DuskTestCase;
+use tests\Browser\ExampleTest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\MessageBag;
@@ -16,6 +19,9 @@ use Auth;
 use DB;
 use Storage;
 use Image;
+
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
 
 
 class BotmanController extends Controller
@@ -29,11 +35,17 @@ class BotmanController extends Controller
             if ($message == 'hi') {
                 $this->askName($botman);
             }
-            else if ($message == 'create'){
-                $botman->reply("");
+            else if ($message == 'Create'){
+                $botman->reply("Enter URL in browser to Visit : http://127.0.0.1:8000/blogs/create");
+            }
+            else if ($message == 'Logout'){
+                $botman->reply("Enter URL in browser to Visit : http://127.0.0.1:8000/logout");
+            }
+            else if ($message == 'Blogs'){
+                $botman->reply("Enter URL in browser to Visit : http://127.0.0.1:8000/blogs");
             }
             else{
-                $botman->reply("Try Typing something like 'Create Blog' or 'Show my Profile' or 'Logout");
+                $botman->reply("Try Typing something like 'Create' or 'Logout' or 'Blogs'");
             } 
   
         });
@@ -51,3 +63,5 @@ class BotmanController extends Controller
         });
     }
 }
+
+?>
